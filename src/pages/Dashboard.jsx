@@ -77,53 +77,56 @@ export default function Dashboard() {
 
   return (
     <div className="p-6">
-      {/* Org Stats Bar */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm mb-6">
-        <StatItem label="Org:" value={orgStats.org} />
-        <Divider />
-        <StatItem label="Owner:" value={orgStats.owner} />
-        <Divider />
-        <StatItem label="Total Scans:" value={orgStats.totalScans} />
-        <Divider />
-        <StatItem label="Scheduled:" value={orgStats.scheduled} />
-        <Divider />
-        <StatItem label="Rescans:" value={orgStats.rescans} />
-        <Divider />
-        <StatItem label="Failed Scans:" value={orgStats.failedScans} />
-        <Divider />
-        <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
-          <Clock className="w-3.5 h-3.5" />
-          <span className="text-sm">{orgStats.lastUpdated}</span>
+      {/* Status Card with Org Stats + Severity */}
+      <Card className="mb-6">
+        {/* Org Stats Bar */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm px-5 py-3">
+          <StatItem label="Org:" value={orgStats.org} />
+          <Divider />
+          <StatItem label="Owner:" value={orgStats.owner} />
+          <Divider />
+          <StatItem label="Total Scans:" value={orgStats.totalScans} />
+          <Divider />
+          <StatItem label="Scheduled:" value={orgStats.scheduled} />
+          <Divider />
+          <StatItem label="Rescans:" value={orgStats.rescans} />
+          <Divider />
+          <StatItem label="Failed Scans:" value={orgStats.failedScans} />
+          <Divider />
+          <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
+            <Clock className="w-3.5 h-3.5" />
+            <span className="text-sm">{orgStats.lastUpdated}</span>
+          </div>
         </div>
-      </div>
 
-      {/* Severity Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
-        {severityStats.map((stat) => {
-          const iconConfig = severityIcons[stat.id];
-          const Icon = iconConfig.icon;
-          const isUp = stat.direction === 'up';
+        {/* Severity Stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+          {severityStats.map((stat) => {
+            const iconConfig = severityIcons[stat.id];
+            const Icon = iconConfig.icon;
+            const isUp = stat.direction === 'up';
 
-          return (
-            <Card key={stat.id} className="p-5">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</span>
-                <Icon className={cn('w-5 h-5', iconConfig.color)} />
+            return (
+              <div key={stat.id} className="p-5">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</span>
+                  <Icon className={cn('w-5 h-5', iconConfig.color)} />
+                </div>
+                <div className="text-4xl font-bold text-gray-900 dark:text-white mb-1">
+                  {stat.count}
+                </div>
+                <div className={cn(
+                  'flex items-center gap-1 text-xs',
+                  isUp ? 'text-teal-accent' : 'text-red-500'
+                )}>
+                  {isUp ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />}
+                  <span>{stat.change} {stat.description}</span>
+                </div>
               </div>
-              <div className="text-4xl font-bold text-gray-900 dark:text-white mb-1">
-                {stat.count}
-              </div>
-              <div className={cn(
-                'flex items-center gap-1 text-xs',
-                isUp ? 'text-teal-accent' : 'text-red-500'
-              )}>
-                {isUp ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />}
-                <span>{stat.change} {stat.description}</span>
-              </div>
-            </Card>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      </Card>
 
       {/* Toolbar */}
       <Card className="p-4 mb-0 rounded-b-none border-b-0">
@@ -306,7 +309,7 @@ function StatItem({ label, value }) {
 }
 
 function Divider() {
-  return <span className="text-gray-300 dark:text-gray-600 hidden sm:inline">|</span>;
+  return <span className="text-gray-300 dark:text-white/80 hidden sm:inline">|</span>;
 }
 
 function DashboardSkeleton() {

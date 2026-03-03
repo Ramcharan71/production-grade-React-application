@@ -13,7 +13,7 @@ export default function SeverityBadge({ severity, count, className }) {
   return (
     <span
       className={cn(
-        'inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold text-white',
+        'inline-flex items-center justify-center w-8 h-7 rounded-md text-xs font-bold text-white',
         severityConfig[severity],
         className
       )}
