@@ -37,7 +37,7 @@ export default function ScanDetail() {
   const [loading, setLoading] = useState(true);
   const consoleRef = useRef(null);
 
-  const _scan = scans.find((s) => s.id === id) || scans[0];
+  const scan = scans.find((s) => s.id === id) || scans[0];
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
@@ -63,7 +63,7 @@ export default function ScanDetail() {
       <Card className="p-6 mb-6">
         <div className="flex flex-col lg:flex-row items-center gap-8">
           {/* Progress Ring */}
-          <ProgressRing value={0} size={130} strokeWidth={8} />
+          <ProgressRing value={scan.progress || 0} size={130} strokeWidth={8} />
 
           {/* Step Tracker */}
           <StepTracker activeStep={0} className="flex-1" />

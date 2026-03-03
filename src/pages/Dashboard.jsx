@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   AlertOctagon,
   AlertTriangle,
-  Search as SearchIcon,
+  ShieldCheck,
   ArrowUp,
   ArrowDown,
   Filter,
@@ -31,7 +31,7 @@ const severityIcons = {
   critical: { icon: AlertOctagon, color: 'text-red-500' },
   high: { icon: AlertTriangle, color: 'text-orange-500' },
   medium: { icon: AlertTriangle, color: 'text-yellow-500' },
-  low: { icon: SearchIcon, color: 'text-teal-accent' },
+  low: { icon: ShieldCheck, color: 'text-teal-accent' },
 };
 
 export default function Dashboard() {

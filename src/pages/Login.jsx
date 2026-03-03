@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import ThemeToggle from '../components/ui/ThemeToggle';
