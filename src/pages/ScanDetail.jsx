@@ -102,38 +102,37 @@ export default function ScanDetail() {
       </Card>
 
       {/* Console + Finding Log */}
-      <div className="flex flex-col lg:flex-row gap-0">
-        {/* Live Scan Console - Left Panel */}
-        <Card className="flex-[3] lg:rounded-r-none overflow-hidden flex flex-col">
-          {/* Console Header */}
-          <div className="flex items-center gap-3 px-5 py-3 border-b border-gray-100 dark:border-surface-dark-border">
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-            <span className="font-semibold text-sm text-gray-900 dark:text-white">
-              Live Scan Console
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20">
-              <Loader2 className="w-3 h-3 animate-spin" />
-              Running...
-            </span>
-            <div className="ml-auto flex items-center gap-1">
-              <button
-                onClick={() => setConsoleOpen(!consoleOpen)}
-                className="p-1.5 rounded text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-surface-dark-hover"
-                aria-label="Toggle console"
-              >
-                <ChevronDown className={cn('w-4 h-4 transition-transform', !consoleOpen && '-rotate-90')} />
-              </button>
-              <button
-                className="p-1.5 rounded text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-surface-dark-hover"
-                aria-label="Close console"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
+      {/* Console Header - spans full width */}
+      <Card className="rounded-b-none border-b-0 overflow-hidden">
+        <div className="flex items-center gap-3 px-5 py-3 border-b border-gray-100 dark:border-surface-dark-border">
+          <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
+          <span className="font-semibold text-sm text-gray-900 dark:text-white">
+            Live Scan Console
+          </span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20">
+            <Loader2 className="w-3 h-3 animate-spin" />
+            Running...
+          </span>
+          <div className="ml-auto flex items-center gap-2">
+            <button
+              onClick={() => setConsoleOpen(!consoleOpen)}
+              className="p-1.5 rounded text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-surface-dark-hover"
+              aria-label="Toggle console"
+            >
+              <ChevronDown className={cn('w-4 h-4 transition-transform', !consoleOpen && '-rotate-90')} />
+            </button>
+            <button
+              className="p-1.5 rounded text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-surface-dark-hover"
+              aria-label="Close console"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
+        </div>
 
-          {/* Tabs */}
-          <div className="flex border-b border-gray-100 dark:border-surface-dark-border px-5">
+        {/* Tabs row: Activity Log / Verification Loops on left, Finding Log on right */}
+        <div className="flex items-center border-b border-gray-100 dark:border-surface-dark-border bg-white dark:bg-black">
+          <div className="flex px-5 flex-[3]">
             <button
               onClick={() => setActiveTab('activity')}
               className={cn(
@@ -157,12 +156,21 @@ export default function ScanDetail() {
               Verification Loops
             </button>
           </div>
+          <div className="flex-[2] px-5 border-l border-gray-100 dark:border-surface-dark-border py-2.5">
+            <span className="font-semibold text-sm text-gray-900 dark:text-white">Finding Log</span>
+          </div>
+        </div>
+      </Card>
+
+      <div className="flex flex-col lg:flex-row gap-0">
+        {/* Live Scan Console - Left Panel */}
+        <Card className="flex-[3] lg:rounded-r-none lg:rounded-t-none overflow-hidden flex flex-col border-t-0">
 
           {/* Console Output */}
           {consoleOpen && (
             <div
               ref={consoleRef}
-              className="console-output p-5 overflow-y-auto flex-1"
+              className="console-output p-5 overflow-y-auto flex-1 bg-black"
               style={{ maxHeight: '450px' }}
             >
               {currentLogs.map((log) => (
@@ -204,12 +212,8 @@ export default function ScanDetail() {
         </Card>
 
         {/* Finding Log - Right Panel */}
-        <Card className="flex-[2] lg:rounded-l-none lg:border-l-0 overflow-hidden flex flex-col">
-          <div className="px-5 py-3 border-b border-gray-100 dark:border-surface-dark-border">
-            <h3 className="font-semibold text-sm text-gray-900 dark:text-white">Finding Log</h3>
-          </div>
-
-          <div className="overflow-y-auto flex-1 p-4 space-y-3" style={{ maxHeight: '520px' }}>
+        <Card className="flex-[2] lg:rounded-l-none lg:rounded-t-none lg:border-l-0 border-t-0 overflow-hidden flex flex-col">
+          <div className="overflow-y-auto flex-1 p-4 space-y-3 bg-black" style={{ maxHeight: '520px' }}>
             {findings.map((finding) => (
               <div
                 key={finding.id}

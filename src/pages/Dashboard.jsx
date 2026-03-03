@@ -76,7 +76,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="p-6">
+    <div className="px-6 pt-3 pb-6">
       {/* Status Card with Org Stats + Severity */}
       <Card className="mb-6">
         {/* Org Stats Bar */}

@@ -20,7 +20,7 @@ export default function AppLayout() {
     <div className="min-h-screen bg-gray-50 dark:bg-surface-dark">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="lg:ml-[200px] min-h-screen flex flex-col">
+      <div className="lg:ml-[228px] min-h-screen flex flex-col">
         {isScanDetail && (
           <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
         )}
