@@ -34,16 +34,6 @@ const navGroups = [
 export default function Sidebar({ isOpen, onClose }) {
   const location = useLocation();
 
-  const isActive = (path) => {
-    if (path === '/dashboard') {
-      return location.pathname === '/dashboard' || location.pathname.startsWith('/dashboard/scan');
-    }
-    if (path === '/scans') {
-      return location.pathname.startsWith('/dashboard/scan');
-    }
-    return location.pathname.startsWith(path);
-  };
-
   // Determine which nav item should be active based on current route
   const getActiveClass = (path) => {
     // On scan detail, Scans should be active

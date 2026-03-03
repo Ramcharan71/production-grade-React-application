@@ -37,7 +37,7 @@ export default function ScanDetail() {
   const [loading, setLoading] = useState(true);
   const consoleRef = useRef(null);
 
-  const scan = scans.find((s) => s.id === id) || scans[0];
+  const _scan = scans.find((s) => s.id === id) || scans[0];
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
