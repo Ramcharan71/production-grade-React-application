@@ -69,9 +69,7 @@ export default function Sidebar({ isOpen, onClose }) {
       >
         {/* Logo */}
         <div className="flex items-center gap-2.5 px-5 py-5">
-          <div className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center">
-            <span className="text-white text-[10px] font-bold">●</span>
-          </div>
+          <div className="w-7 h-7 rounded-full bg-orange-500" />
           <span className="text-lg font-bold text-gray-900 dark:text-white">aps</span>
           {/* Mobile close */}
           <button
@@ -99,7 +97,7 @@ export default function Sidebar({ isOpen, onClose }) {
                       : item.path}
                     onClick={onClose}
                     className={cn(
-                      'flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 mb-0.5',
+                      'flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-150 mb-0.5',
                       active
                         ? 'bg-teal-accent text-white'
                         : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-hover hover:text-gray-700 dark:hover:text-gray-200'

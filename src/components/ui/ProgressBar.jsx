@@ -5,7 +5,7 @@ export default function ProgressBar({ value = 0, status = 'completed', className
 
   return (
     <div className={cn('flex items-center gap-3', className)}>
-      <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+      <div className="flex-1 h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
         <div
           className={cn(
             'h-full rounded-full transition-all duration-500',

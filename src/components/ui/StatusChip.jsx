@@ -12,8 +12,8 @@ const statusConfig = {
     label: 'Scheduled',
   },
   failed: {
-    bg: 'bg-red-100 dark:bg-red-500/15',
-    text: 'text-red-700 dark:text-red-400',
+    bg: 'bg-red-500/20 dark:bg-red-500/20',
+    text: 'text-red-600 dark:text-red-400',
     label: 'Failed',
   },
   'in-progress': {

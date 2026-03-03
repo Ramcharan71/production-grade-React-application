@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   AlertOctagon,
   AlertTriangle,
-  ShieldCheck,
+  Search as SearchIcon,
   ArrowUp,
   ArrowDown,
   Filter,
@@ -31,7 +31,7 @@ const severityIcons = {
   critical: { icon: AlertOctagon, color: 'text-red-500' },
   high: { icon: AlertTriangle, color: 'text-orange-500' },
   medium: { icon: AlertTriangle, color: 'text-yellow-500' },
-  low: { icon: ShieldCheck, color: 'text-teal-accent' },
+  low: { icon: SearchIcon, color: 'text-teal-accent' },
 };
 
 export default function Dashboard() {
@@ -148,6 +148,7 @@ export default function Dashboard() {
               variant="primary"
               size="md"
               icon={Plus}
+              pill
               onClick={() => setShowNewScanModal(true)}
             >
               New scan
@@ -239,7 +240,7 @@ export default function Dashboard() {
         {/* Pagination footer */}
         <div className="flex items-center justify-between px-6 py-3 border-t border-gray-100 dark:border-surface-dark-border">
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            Showing {paginatedScans.length} of {filteredScans.length} Scans
+            Showing {paginatedScans.length} of {searchQuery ? filteredScans.length : orgStats.totalScans} Scans
           </span>
           <div className="flex items-center gap-1">
             <button
