@@ -1,6 +1,6 @@
 import { cn } from '../../lib/utils';
 
-export default function ProgressRing({ value = 0, size = 130, strokeWidth = 8, className }) {
+export default function ProgressRing({ value = 0, size = 120, strokeWidth = 7, className }) {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (value / 100) * circumference;
@@ -16,7 +16,7 @@ export default function ProgressRing({ value = 0, size = 130, strokeWidth = 8, c
           fill="none"
           stroke="currentColor"
           strokeWidth={strokeWidth}
-          className="text-gray-200 dark:text-gray-700"
+          className="text-gray-200 dark:text-surface-dark-border"
         />
         {/* Progress circle */}
         <circle
@@ -33,8 +33,8 @@ export default function ProgressRing({ value = 0, size = 130, strokeWidth = 8, c
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-3xl font-bold text-gray-900 dark:text-white">{value}%</span>
-        <span className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">In Progress</span>
+        <span className="text-2xl font-bold text-gray-900 dark:text-white">{value}%</span>
+        <span className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">In Progress</span>
       </div>
     </div>
   );

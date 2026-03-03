@@ -60,32 +60,44 @@ export default function ScanDetail() {
   return (
     <div className="p-6">
       {/* Progress + Steps Section */}
-      <Card className="p-6 mb-6">
-        <div className="flex flex-col lg:flex-row items-center gap-8">
-          {/* Progress Ring */}
-          <ProgressRing value={scan.progress || 0} size={130} strokeWidth={8} />
+      <Card className="mb-6 overflow-hidden">
+        <div className="flex flex-col lg:flex-row relative">
+          {/* Progress Ring - vertically centered across full card height */}
+          <div className="flex-shrink-0 w-[180px] flex items-center justify-center py-6">
+            <ProgressRing value={scan.progress || 0} size={100} strokeWidth={7} />
+          </div>
 
-          {/* Step Tracker */}
-          <StepTracker activeStep={0} className="flex-1" />
-        </div>
+          {/* Vertical Divider - spans full card height */}
+          <div className="hidden lg:block absolute left-[180px] top-0 bottom-0 w-px bg-gray-200 dark:bg-surface-dark-border" />
 
-        {/* Metadata Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mt-6 pt-6 border-t border-gray-100 dark:border-surface-dark-border">
-          {metadata.map((item) => (
-            <div key={item.label}>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{item.label}</p>
-              <p
-                className={cn(
-                  'text-sm font-semibold',
-                  item.accent
-                    ? 'text-teal-accent'
-                    : 'text-gray-900 dark:text-white'
-                )}
-              >
-                {item.value}
-              </p>
+          {/* Right side: Step Tracker + Metadata */}
+          <div className="flex-1 lg:pl-10 flex flex-col">
+            {/* Step Tracker */}
+            <div className="px-6 pt-6 pb-4">
+              <StepTracker activeStep={0} />
             </div>
-          ))}
+
+            {/* Metadata Row */}
+            <div className="px-6 pt-4 pb-6 border-t border-gray-200 dark:border-surface-dark-border">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-10 gap-y-4">
+                {metadata.map((item) => (
+                  <div key={item.label}>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{item.label}</p>
+                    <p
+                      className={cn(
+                        'text-[15px] font-bold',
+                        item.accent
+                          ? 'text-teal-accent'
+                          : 'text-gray-900 dark:text-white'
+                      )}
+                    >
+                      {item.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </Card>
 
@@ -99,7 +111,7 @@ export default function ScanDetail() {
             <span className="font-semibold text-sm text-gray-900 dark:text-white">
               Live Scan Console
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full bg-gray-100 dark:bg-surface-dark-hover text-gray-500 dark:text-gray-400">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20">
               <Loader2 className="w-3 h-3 animate-spin" />
               Running...
             </span>
@@ -197,16 +209,16 @@ export default function ScanDetail() {
             <h3 className="font-semibold text-sm text-gray-900 dark:text-white">Finding Log</h3>
           </div>
 
-          <div className="overflow-y-auto flex-1" style={{ maxHeight: '520px' }}>
+          <div className="overflow-y-auto flex-1 p-4 space-y-3" style={{ maxHeight: '520px' }}>
             {findings.map((finding) => (
               <div
                 key={finding.id}
-                className="px-5 py-4 border-b border-gray-50 dark:border-surface-dark-border/50 last:border-b-0"
+                className="p-4 rounded-xl bg-gray-50 dark:bg-surface-dark-hover/50 border border-gray-100 dark:border-surface-dark-border"
               >
                 <div className="flex items-start justify-between mb-2">
                   <span
                     className={cn(
-                      'inline-block px-3 py-1 text-xs font-bold text-white rounded-full capitalize',
+                      'inline-block px-3 py-1 text-xs font-bold text-white rounded-md capitalize',
                       severityBadgeColors[finding.severity]
                     )}
                   >
@@ -232,7 +244,7 @@ export default function ScanDetail() {
       </div>
 
       {/* Status Bar */}
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-4 px-5 py-3 bg-white dark:bg-surface-dark-card rounded-xl border border-gray-100 dark:border-surface-dark-border text-xs">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-4 px-5 py-3 bg-white dark:bg-surface-dark-card rounded-xl border border-gray-100 dark:border-surface-dark-border text-xs"  style={{ display: 'none' }}>
         <div className="flex items-center gap-6">
           <StatusBarItem label="Sub-agents" value="3" />
           <StatusBarItem label="Parallel Executions" value="2" />

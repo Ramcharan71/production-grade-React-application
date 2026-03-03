@@ -11,30 +11,31 @@ const steps = [
 
 export default function StepTracker({ activeStep = 0, className }) {
   return (
-    <div className={cn('flex items-center justify-between flex-1', className)}>
+    <div className={cn('flex items-center w-full', className)}>
       {steps.map((step, index) => {
         const isActive = index === activeStep;
         const isCompleted = index < activeStep;
         const StepIcon = step.icon;
+        const isLast = index === steps.length - 1;
 
         return (
-          <div key={step.label} className="flex items-center flex-1">
-            <div className="flex flex-col items-center">
+          <div key={step.label} className={cn('flex items-center', isLast ? '' : 'flex-1')}>
+            <div className="flex flex-col items-center min-w-[70px]">
               <div
                 className={cn(
-                  'w-12 h-12 rounded-full flex items-center justify-center transition-all border-2',
+                  'w-14 h-14 rounded-full flex items-center justify-center transition-all border-2',
                   isActive
                     ? 'bg-teal-accent border-teal-accent text-white'
                     : isCompleted
                     ? 'bg-teal-accent/20 border-teal-accent text-teal-accent'
-                    : 'bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-400 dark:text-gray-500'
+                    : 'bg-gray-100 dark:bg-surface-dark-hover border-gray-300 dark:border-surface-dark-border text-gray-400 dark:text-gray-500'
                 )}
               >
-                <StepIcon className="w-5 h-5" />
+                <StepIcon className="w-6 h-6" />
               </div>
               <span
                 className={cn(
-                  'text-xs mt-2 font-medium',
+                  'text-sm mt-2.5 font-medium whitespace-nowrap',
                   isActive
                     ? 'text-teal-accent'
                     : isCompleted
@@ -45,13 +46,13 @@ export default function StepTracker({ activeStep = 0, className }) {
                 {step.label}
               </span>
             </div>
-            {index < steps.length - 1 && (
+            {!isLast && (
               <div
                 className={cn(
-                  'flex-1 h-0.5 mx-3 mt-[-18px]',
+                  'flex-1 h-[2px] -mx-1 -translate-y-3',
                   index < activeStep
                     ? 'bg-teal-accent'
-                    : 'bg-gray-300 dark:bg-gray-600'
+                    : 'bg-gray-400 dark:bg-gray-500'
                 )}
               />
             )}

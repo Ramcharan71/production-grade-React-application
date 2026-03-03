@@ -5,7 +5,7 @@ export const findings = [
     title: 'SQL Injection in Authentication Endpoint',
     endpoint: '/api/users/profile',
     description: 'Time-based blind SQL injection confirmed on user-controlled input during authentication flow. Exploitation allows database-level access.',
-    timestamp: '10:45:23',
+    timestamp: '19:45:23',
   },
   {
     id: 'finding-002',
