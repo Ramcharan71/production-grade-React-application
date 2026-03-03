@@ -162,22 +162,22 @@ export default function Dashboard() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-100 dark:border-surface-dark-border">
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                   Scan Name
                 </th>
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                   Type
                 </th>
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                   Status
                 </th>
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider w-48">
+                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 w-48">
                   Progress
                 </th>
-                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                   Vulnerability
                 </th>
-                <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                   Last Scan
                 </th>
               </tr>

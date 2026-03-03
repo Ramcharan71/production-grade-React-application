@@ -1,9 +1,9 @@
 import { cn } from '../../lib/utils';
-import { Search, Radar, AlertTriangle, ClipboardCheck, FileText } from 'lucide-react';
+import { Radar, Network, AlertTriangle, ClipboardCheck, FileText } from 'lucide-react';
 
 const steps = [
   { label: 'Spidering', icon: Radar },
-  { label: 'Mapping', icon: Search },
+  { label: 'Mapping', icon: Network },
   { label: 'Testing', icon: AlertTriangle },
   { label: 'Validating', icon: ClipboardCheck },
   { label: 'Reporting', icon: FileText },
